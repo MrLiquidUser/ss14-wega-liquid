@@ -22,7 +22,7 @@
   id: ERTSecurity
   name: tactical-interface-ert-security-name
   description: tactical-interface-ert-security-desc
-  productEntity: RandomHumanoidSpawnerERTSecurityEVALecter
+  productEntity: RandomHumanoidSpawnerERTSecurityEVA
   cost:
     TacticalResource: 30
   categories:
@@ -539,7 +539,7 @@
   cost:
     TacticalResource: 1
   categories:
-  - ERTEquipment  
+  - ERTEquipment
 
 - type: listing
   id: ERTRCDCombat
