@@ -912,7 +912,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         var localBounds = avanpostGrid.LocalAABB;
 
         var center = worldPos + localBounds.Center;
-        var radius = Math.Max(localBounds.Width, localBounds.Height) / 2f + 12f;
+        var radius = Math.Max(localBounds.Width, localBounds.Height) / 2f + 6f;
 
         _biome.ReserveTilesInCircle(mapUid, center, radius, biome, grid);
     }

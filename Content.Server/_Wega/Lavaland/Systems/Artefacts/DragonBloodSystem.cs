@@ -1,7 +1,7 @@
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
-using Content.Shared.Interaction;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
@@ -23,14 +23,14 @@ public sealed class DragonBloodSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<DragonBloodComponent, InteractUsingEvent>(OnInteract);
+        SubscribeLocalEvent<DragonBloodComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<DragonBloodComponent, DragonBloodDoAfterEvent>(OnDoAfter);
 
         SubscribeLocalEvent<BecomeToDrakeActionEvent>(OnBecomeToDrake);
         SubscribeLocalEvent<DrakeReturnBackActionEvent>(OnReturnBack);
     }
 
-    private void OnInteract(Entity<DragonBloodComponent> ent, ref InteractUsingEvent args)
+    private void OnUseInHand(Entity<DragonBloodComponent> ent, ref UseInHandEvent args)
     {
         var ev = new DragonBloodDoAfterEvent();
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(5), ev, ent)

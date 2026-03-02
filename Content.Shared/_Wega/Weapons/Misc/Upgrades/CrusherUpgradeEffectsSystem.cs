@@ -17,6 +17,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Weapons.Misc.Upgrades;
@@ -26,6 +27,7 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tag = default!;
@@ -255,16 +257,26 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     {
         var user = args.User;
         var target = args.Target;
-        var ents = _lookup.GetEntitiesInRange<DamageableComponent>(Transform(entity).Coordinates, entity.Comp.DamageRadius)
-            .Where(e => e.Owner != target && e.Owner != user);
+        if (!Exists(target))
+            return;
+
+        var ents = _lookup.GetEntitiesInRange<DamageableComponent>(Transform(target).Coordinates, entity.Comp.DamageRadius)
+            .Where(e => e.Owner != target && e.Owner != user).ToList();
 
         foreach (var ent in ents)
         {
+            // Only for mobs.
+            if (!HasComp<MobStateComponent>(ent))
+                continue;
+
             _damage.TryChangeDamage(ent.Owner, args.Damage * entity.Comp.DamageMultiplier);
 
-            var entityPos = _transform.GetWorldPosition(entity);
+            var targetPos = _transform.GetWorldPosition(target);
             var entPos = _transform.GetWorldPosition(ent.Owner);
-            var direction = (entPos - entityPos).Normalized();
+            var direction = (entPos - targetPos).Normalized();
+
+            var randomAngle = new Angle(_random.NextFloat(-0.2f, 0.2f));
+            direction = randomAngle.RotateVec(direction);
 
             _throwing.TryThrow(ent, direction);
         }

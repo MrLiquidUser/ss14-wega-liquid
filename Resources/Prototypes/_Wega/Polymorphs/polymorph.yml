@@ -56,6 +56,9 @@
     entity: MobSkeletonPerson
     forced: true
     transferName: true
+    inventory: Transfer
+    revertOnCrit: false
+    revertOnDeath: false
 
 - type: polymorph
   id: LowerAshDrakePolymorph

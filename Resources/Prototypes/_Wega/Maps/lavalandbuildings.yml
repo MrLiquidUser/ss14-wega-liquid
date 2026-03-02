@@ -209,6 +209,7 @@
 - type: lavalandBuilding
   id: LavaRiver
   gridPath: /Maps/Lavaland/lava_river.yml
+  preloading: false
 
 - type: lavalandBuilding
   id: MimingDrill
