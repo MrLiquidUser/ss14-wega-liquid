@@ -11,6 +11,8 @@ modsuit-ui-battery-present = ЕСТЬ
 modsuit-ui-no-battery = НЕТУ
 modsuit-ui-no-core = НЕТУ ЯДРА
 modsuit-ui-not-worn = Не надет
+modsuit-ui-power-draw = Потребление
+modsuit-ui-power-draw-value = {$power} Вт/C
 modsuit-ui-modules = Модули
 modsuit-ui-parts = Части
 modsuit-ui-no-power-usage = Пассивно НЕ потребляет энергию
@@ -34,6 +36,8 @@ modsuit-part-gloves = Перчатки
 modsuit-part-boots = Ботинки
 
 # System
+modsuit-deploy-blocked = Невозможно развернуть костюм.
+modsuit-undeploy-blocked = Невозможно свернуть костюм.
 modsuit-panel-closed = Панель закрыта. Используйте отвёртку, чтобы открыть её.
 modsuit-core-slot-occupied = Слот ядра уже занят.
 modsuit-core-installed = Ядро установлено в костюм.

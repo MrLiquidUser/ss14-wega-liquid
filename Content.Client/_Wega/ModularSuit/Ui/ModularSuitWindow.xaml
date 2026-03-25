@@ -52,6 +52,9 @@
 
                                 <Label Text="{Loc 'modsuit-ui-battery'}" FontColorOverride="#aaccff"/>
                                 <Label Name="BatteryStatusLabel" Text="{Loc 'modsuit-ui-no-battery'}" FontColorOverride="#ffaa33" HorizontalAlignment="Right"/>
+
+                                <Label Text="{Loc 'modsuit-ui-power-draw'}" FontColorOverride="#aaccff"/>
+                                <Label Name="PowerDrawLabel" FontColorOverride="#ffaa33" HorizontalAlignment="Right"/>
                             </GridContainer>
                         </BoxContainer>
                     </PanelContainer>

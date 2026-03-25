@@ -95,12 +95,15 @@ public sealed partial class ModularSuitSystem
 
         bool hasBattery = _powerCell.HasBattery(ent.Owner);
 
+        float totalPowerDraw = ent.Comp.BasePowerDraw;
         var modules = new List<SuitModuleEntry>();
         var moduleContainer = Container.GetContainer(ent, ModuleContainer);
         foreach (var moduleUid in moduleContainer.ContainedEntities)
         {
             if (!TryComp<ModularSuitModuleComponent>(moduleUid, out var module))
                 continue;
+
+            if (module.IsActive) totalPowerDraw += module.PowerUsage;
 
             modules.Add(new SuitModuleEntry(
                 GetNetEntity(moduleUid),
@@ -159,6 +162,7 @@ public sealed partial class ModularSuitSystem
             maxCoreCharge,
             hasCore,
             hasBattery,
+            totalPowerDraw,
             modules,
             parts,
             wearerName

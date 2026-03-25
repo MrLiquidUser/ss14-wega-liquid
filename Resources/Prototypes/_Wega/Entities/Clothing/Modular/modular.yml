@@ -442,7 +442,6 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellSmall
       item:
         name: clothing-hardsuits-jetpack
         whitelist:
@@ -558,7 +557,7 @@
     sprite: _Wega/Clothing/Modular/Atmospheric/control.rsi
   - type: ContainerFill
     containers:
-      suit_core: *core-slot-plasma
+      suit_core: *core-slot
       suit_part:
         - ClothingModularHelmetAtmospheric
         - ClothingModularChestPlateAtmospheric
@@ -793,7 +792,7 @@
   parent: ClothingModularControllerBase
   id: ClothingModularControllerCivilian
   name: civilian modsuit controller
-  description: A lightweight controller for civilian use. Does not provide vacuum protection.
+  description: A lightweight controller for civilian use.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Modular/Civilian/control.rsi
@@ -807,6 +806,9 @@
         - ClothingModularChestPlateCivilian
         - ClothingModularGauntletsCivilian
         - ClothingModularBootsCivilian
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -842,6 +844,13 @@
         color: "#a4fef4"
   - type: PointLight
     color: "#a4fef4"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Heat: 0.95
+        Radiation: 0.4
 
 - type: entity
   parent: ClothingModularChestPlateBase
@@ -858,6 +867,13 @@
     verbIcon:
       sprite: _Wega/Clothing/Modular/Civilian/chestplate.rsi
       state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Heat: 0.95
+        Radiation: 0.4
 
 - type: entity
   parent: ClothingModularGauntletsBase

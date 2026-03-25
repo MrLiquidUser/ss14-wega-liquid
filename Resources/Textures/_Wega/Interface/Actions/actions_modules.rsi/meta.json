@@ -8,6 +8,15 @@
     },
     "states": [
         {
+            "name": "activate"
+        },
+        {
+            "name": "activate-ready"
+        },
+        {
+            "name": "panel"
+        },
+        {
             "name": "atrocinator"
         },
         {

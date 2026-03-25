@@ -1,11 +1,27 @@
 - type: entity
   parent: BaseAction
+  id: ToggleModularSuitDeployAction
+  name: "[color=#58c4e8]Expand Suit[/color]"
+  description: "Opens the modular suit, placing all the installed parts on the body. When pressed again, it closes the suit back into a compact state."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1.5
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: activate }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: activate-ready }
+    itemIconStyle: BigAction
+  - type: InstantAction
+    event: !type:ToggleDeploySuitActionEvent
+
+- type: entity
+  parent: BaseAction
   id: ToggleModularSuitUiAction
   name: "[color=#58c4e8]Open MODSuit interface[/color]"
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
     useDelay: 2
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: panel }
   - type: InstantAction
     event: !type:ToggleSuitUiActionEvent
 
@@ -32,7 +48,7 @@
   components:
   - type: Action
     useDelay: 1
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-off}
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-off }
     iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-on }
   - type: InstantAction
     event: !type:ToggleLightModuleEvent

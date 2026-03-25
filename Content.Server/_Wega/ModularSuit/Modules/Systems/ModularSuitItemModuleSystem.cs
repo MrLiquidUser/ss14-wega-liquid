@@ -1,3 +1,4 @@
+using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Components;
@@ -106,6 +107,7 @@ public sealed class ModularSuitItemModuleSystem : EntitySystem
 
             _toggle.TryDeactivate(item);
             RemComp<UnremoveableComponent>(item);
+            RaiseLocalEvent(item, new HandDeselectedEvent(suitComp.Wearer.Value));
             var container = _container.GetContainer(module.Owner, module.Comp.ContainerId);
             _container.Insert(item, container);
 

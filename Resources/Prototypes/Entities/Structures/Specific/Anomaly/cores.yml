@@ -374,6 +374,13 @@
     energy: 10
     color: "#1e070e"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - GravityCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -440,6 +447,13 @@
     energy: 3.5
     color: "#00ccff"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - BluespaceCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore

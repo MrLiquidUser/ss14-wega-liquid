@@ -1,3 +1,5 @@
+ent-ToggleModularSuitDeployAction = [color=#58c4e8]Развернуть костюм[/color]
+    .desc = Раскрывает модульный костюм, надевая все установленные части на тело. При повторном нажатии сворачивает костюм обратно в компактное состояние.
 ent-ToggleModularSuitUiAction = [color=#58c4e8]Открыть интерфейс MODSuit[/color]
 ent-OpenStorageModuleAction = [color=#58c4e8]Открыть модуль хранения[/color]
     .desc = Открывает хранилище установленного модуля.

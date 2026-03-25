@@ -1,4 +1,5 @@
 using Content.Shared.Inventory.Events;
+using Content.Shared.Modular.Suit;
 
 namespace Content.Shared.Inventory;
 
@@ -11,6 +12,7 @@ public sealed partial class EmptySlotsRequirementSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<EmptySlotsRequirementComponent, BeingEquippedAttemptEvent>(OnEquipAttempt);
+        SubscribeLocalEvent<EmptySlotsRequirementComponent, ModularSuitDeployAttemptEvent>(OnDeployAttempt);
     }
 
     private void OnEquipAttempt(EntityUid uid, EmptySlotsRequirementComponent component, BeingEquippedAttemptEvent args)
@@ -19,6 +21,17 @@ public sealed partial class EmptySlotsRequirementSystem : EntitySystem
             return;
 
         CheckEmptySlotsRequirement((uid, component), args.EquipTarget, args);
+    }
+
+    private void OnDeployAttempt(Entity<EmptySlotsRequirementComponent> ent, ref ModularSuitDeployAttemptEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        if (!TryComp<ModularSuitComponent>(ent, out var suit) || suit.Wearer == null)
+            return;
+
+        CheckEmptySlotsRequirement(ent, suit.Wearer.Value, args);
     }
 
     private void CheckEmptySlotsRequirement(Entity<EmptySlotsRequirementComponent> ent, EntityUid target, EquipAttemptBase args)
@@ -41,6 +54,32 @@ public sealed partial class EmptySlotsRequirementSystem : EntitySystem
                 if (container.ContainedEntity != null)
                 {
                     args.Reason = Loc.GetString("empty-slots-requirement-blocked");
+                    args.Cancel();
+                    return;
+                }
+            }
+        }
+    }
+
+    private void CheckEmptySlotsRequirement(Entity<EmptySlotsRequirementComponent> ent, EntityUid target, CancellableEntityEventArgs args)
+    {
+        var requiredSlots = ent.Comp.Slots;
+        if (requiredSlots == SlotFlags.NONE)
+            return;
+
+        if (!TryComp<InventoryComponent>(target, out var inventory))
+            return;
+
+        var slots = inventory.Slots;
+        foreach (var slot in slots)
+        {
+            if ((slot.SlotFlags & requiredSlots) == 0)
+                continue;
+
+            if (_inventory.TryGetSlotContainer(target, slot.Name, out var container, out _, inventory))
+            {
+                if (container.ContainedEntity != null)
+                {
                     args.Cancel();
                     return;
                 }

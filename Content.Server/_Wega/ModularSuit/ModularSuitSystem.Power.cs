@@ -240,7 +240,7 @@ public sealed partial class ModularSuitSystem
 
         if (!core.Infinite)
         {
-            if (core.Charge <= core.MaxCharge * 0.5f && GameTiming.CurTime >= suit.Comp.NextLowPowerSound)
+            if (core.Charge <= core.MaxCharge * 0.4f && GameTiming.CurTime >= suit.Comp.NextLowPowerSound)
             {
                 suit.Comp.NextLowPowerSound = GameTiming.CurTime + suit.Comp.LowPowerCooldown;
                 _audio.PlayPvs(suit.Comp.LowPowerSound, suit.Owner);

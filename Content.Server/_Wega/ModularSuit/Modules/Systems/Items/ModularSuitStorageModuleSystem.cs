@@ -29,7 +29,13 @@ public sealed class ModularSuitStorageModuleSystem : EntitySystem
     private void OnModuleRemoved(Entity<ModularSuitStorageModuleComponent> module, ref ModularSuitRemovedEvent args)
     {
         if (_container.TryGetContainer(module.Owner, module.Comp.ContainerId, out var container))
-            _container.EmptyContainer(container, true);
+        {
+            var coords = Transform(args.Suit).Coordinates;
+            if (TryComp<ModularSuitComponent>(args.Suit, out var modular) && modular.Wearer != null)
+                coords = Transform(modular.Wearer.Value).Coordinates;
+
+            _container.EmptyContainer(container, true, coords);
+        }
 
         if (_ui.HasUi(module.Owner, StorageComponent.StorageUiKey.Key))
             _ui.CloseUi(module.Owner, StorageComponent.StorageUiKey.Key);
@@ -38,9 +44,6 @@ public sealed class ModularSuitStorageModuleSystem : EntitySystem
     private void OnOpenStorage(Entity<ModularSuitActionHolderComponent> ent, ref OpenStorageModuleEvent args)
     {
         if (args.Handled)
-            return;
-
-        if (!TryComp<ModularSuitComponent>(ent, out var suit) || !suit.Active)
             return;
 
         EntityUid? moduleEnt = null;

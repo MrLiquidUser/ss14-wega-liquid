@@ -15,14 +15,6 @@
                 state: "standard-plating"
             - tool: Screwing
               doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
-            - tool: Screwing
-              doAfter: 2
           completed:
             - !type:DestroyEntity {}
 
@@ -34,14 +26,6 @@
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
                 state: "civilian-plating"
-            - tool: Screwing
-              doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
             - tool: Screwing
               doAfter: 2
           completed:
@@ -57,14 +41,6 @@
                 state: "cosmohonk-plating"
             - tool: Screwing
               doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
-            - tool: Screwing
-              doAfter: 2
           completed:
             - !type:DestroyEntity {}
 
@@ -76,14 +52,6 @@
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
                 state: "engineering-plating"
-            - tool: Screwing
-              doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
             - tool: Screwing
               doAfter: 2
           completed:
@@ -99,14 +67,6 @@
                 state: "atmospheric-plating"
             - tool: Screwing
               doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
-            - tool: Screwing
-              doAfter: 2
           completed:
             - !type:DestroyEntity {}
 
@@ -118,14 +78,6 @@
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
                 state: "advanced-plating"
-            - tool: Screwing
-              doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
             - tool: Screwing
               doAfter: 2
           completed:
@@ -141,14 +93,6 @@
                 state: "security-plating"
             - tool: Screwing
               doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
-            - tool: Screwing
-              doAfter: 2
           completed:
             - !type:DestroyEntity {}
 
@@ -160,14 +104,6 @@
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
                 state: "safeguard-plating"
-            - tool: Screwing
-              doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
             - tool: Screwing
               doAfter: 2
           completed:
@@ -183,14 +119,6 @@
                 state: "rescue-plating"
             - tool: Screwing
               doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
-            - tool: Screwing
-              doAfter: 2
           completed:
             - !type:DestroyEntity {}
 
@@ -202,14 +130,6 @@
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
                 state: "medical-plating"
-            - tool: Screwing
-              doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
-              doAfter: 2
             - tool: Screwing
               doAfter: 2
           completed:
@@ -224,13 +144,6 @@
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
                 state: "research-plating"
               doAfter: 2
-            - tool: Screwing
-              doAfter: 2
-            - tag: PowerCellSmall
-              name: construction-graph-tag-power-cell-small
-              icon:
-                sprite: Objects/Power/power_cells.rsi
-                state: small
             - tool: Screwing
               doAfter: 2
           completed:

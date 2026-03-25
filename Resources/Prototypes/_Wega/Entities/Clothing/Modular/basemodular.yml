@@ -35,11 +35,7 @@
   - type: Clothing
     stripDelay: 5
     equipDelay: 2
-    equipSound:
-      path: "/Audio/Mecha/mechmove03.ogg"
     unequipDelay: 2
-    unequipSound:
-      path: "/Audio/Mecha/mechmove03.ogg"
     quickEquip: false
     slots: [ back ]
     clothingVisuals:
@@ -56,6 +52,7 @@
     slots: [ outerclothing ]
   - type: SlotBlock
     slots: [ head, outerclothing, gloves, feet ]
+    enabled: false
   - type: ModularSuit
     activeComponents:
       head:
@@ -77,6 +74,7 @@
       enum.ModularSuitUiKey.Key:
         type: ModularSuitBoundUserInterface
   - type: WiresPanel
+    open: true
   - type: LockedWiresPanel
   - type: ContainerContainer
     containers:
@@ -93,14 +91,13 @@
     cellSlotId: cell_slot
     fitsInCharger: true
   - type: Lock
-    locked: true
+    locked: false
     unlockOnClick: false
   - type: BypassLock
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellSmall
   - type: Damageable
     damageContainer: Clothing
   - type: Reactive
@@ -207,6 +204,16 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+
+- type: entity
+  id: ClothingModularControllerLockedBase
+  abstract: true
+  components:
+  - type: WiresPanel
+    open: false
+  - type: Lock
+    locked: true
+    unlockOnClick: false
 
 - type: entity
   parent: [ BaseItem, BaseClothingModularToggler, AllowSuitStorageClothing ]

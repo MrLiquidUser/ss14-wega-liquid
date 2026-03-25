@@ -658,6 +658,10 @@
   components:
   - type: Sprite
     state: empshield
+  - type: ModularSuitModuleWearerEffect
+    activeComponents:
+    - type: EmpResistance
+      strengthMultiplier: 0
   - type: ModularSuitModuleEffect
     activeComponents:
     - type: EmpResistance

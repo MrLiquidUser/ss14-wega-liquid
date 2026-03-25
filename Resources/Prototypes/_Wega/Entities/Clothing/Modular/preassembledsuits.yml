@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingModularControllerStandard
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerStandard ]
   id: ClothingModularControllerStandardPreassembled
   suffix: Preassembled
   components:
@@ -7,9 +7,14 @@
     modules:
     - StorageSuitModule
     - FlashlightSuitModuleCyan
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
 
 - type: entity
-  parent: ClothingModularControllerCivilian
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerCivilian ]
   id: ClothingModularControllerCivilianPreassembled
   suffix: Preassembled
   components:
@@ -17,9 +22,14 @@
     modules:
     - StorageSuitModule
     - FlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
 
 - type: entity
-  parent: ClothingModularControllerEngineering
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerEngineering ]
   id: ClothingModularControllerEngineeringPreassembled
   suffix: Preassembled
   components:
@@ -37,10 +47,19 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularControllerAtmospheric
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerAtmospheric ]
   id: ClothingModularControllerAtmosphericPreassembled
   suffix: Preassembled
   components:
+  - type: ContainerFill
+    containers:
+      suit_core: &core-slot-plasma #<-- &
+        - ModularSuitCorePlasma
+      suit_part:
+        - ClothingModularHelmetAtmospheric
+        - ClothingModularChestPlateAtmospheric
+        - ClothingModularGauntletsAtmospheric
+        - ClothingModularBootsAtmospheric
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
@@ -56,7 +75,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularControllerAdvanced
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerAdvanced ]
   id: ClothingModularControllerAdvancedPreassembled
   suffix: Preassembled
   components:
@@ -75,7 +94,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerPrototype
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerPrototype ]
   id: ClothingModularControllerPrototypePreassembled
   suffix: Preassembled
   components:
@@ -86,9 +105,14 @@
     - GPSSuitModule
     - OreBagSuitModule
     - MagnetSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
 
 - type: entity
-  parent: ClothingModularControllerAsteroid
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerAsteroid ]
   id: ClothingModularControllerAsteroidPreassembled
   suffix: Preassembled
   components:
@@ -114,7 +138,7 @@
           - Jetpack
 
 - type: entity
-  parent: ClothingModularControllerMining
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerMining ]
   id: ClothingModularControllerMiningPreassembled
   suffix: Preassembled
   components:
@@ -133,7 +157,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularControllerLoader
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerLoader ]
   id: ClothingModularControllerLoaderPreassembled
   suffix: Preassembled
   components:
@@ -142,9 +166,14 @@
     - StorageSuitModule
     - FlashlightSuitModuleMint
     - GrabberSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
 
 - type: entity
-  parent: ClothingModularControllerMedical
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerMedical ]
   id: ClothingModularControllerMedicalPreassembled
   suffix: Preassembled
   components:
@@ -162,7 +191,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerRescue
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerRescue ]
   id: ClothingModularControllerRescuePreassembled
   suffix: Preassembled
   components:
@@ -181,7 +210,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerResearch
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerResearch ]
   id: ClothingModularControllerResearchPreassembled
   suffix: Preassembled
   components:
@@ -200,7 +229,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerSecurity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerSecurity ]
   id: ClothingModularControllerSecurityPreassembled
   suffix: Preassembled
   components:
@@ -218,7 +247,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerSafeguard
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerSafeguard ]
   id: ClothingModularControllerSafeguardPreassembled
   suffix: Preassembled
   components:
@@ -237,7 +266,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerMagnate
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerMagnate ]
   id: ClothingModularControllerMagnatePreassembled
   suffix: Preassembled
   components:
@@ -255,7 +284,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularControllerCosmohonk
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerCosmohonk ]
   id: ClothingModularControllerCosmohonkPreassembled
   suffix: Preassembled
   components:
@@ -264,9 +293,14 @@
     - StorageSuitModule
     - FlashlightSuitModuleRed
     - BikeHornSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
 
 - type: entity
-  parent: ClothingModularControllerSyndicate
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerSyndicate ]
   id: ClothingModularControllerSyndicatePreassembled
   suffix: Preassembled
   components:
@@ -285,7 +319,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularControllerElite
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerElite ]
   id: ClothingModularControllerElitePreassembled
   suffix: Preassembled
   components:
@@ -304,7 +338,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularControllerApocryphal
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerApocryphal ]
   id: ClothingModularControllerApocryphalPreassembled
   suffix: Preassembled
   components:
@@ -327,7 +361,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularControllerCorporate
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerCorporate ]
   id: ClothingModularControllerCorporatePreassembled
   suffix: Preassembled
   components:
@@ -349,7 +383,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularControllerResponsory
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerResponsory ]
   id: ClothingModularControllerResponsoryPreassembled
   suffix: Preassembled
   components:
@@ -370,7 +404,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularControllerInquisitory
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerInquisitory ]
   id: ClothingModularControllerInquisitoryPreassembled
   suffix: Preassembled
   components:

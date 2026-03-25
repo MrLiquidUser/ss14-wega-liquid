@@ -1,6 +1,9 @@
 namespace Content.Shared.Modular.Suit;
 
 [ByRefEvent]
+public sealed class ModularSuitDeployAttemptEvent : CancellableEntityEventArgs;
+
+[ByRefEvent]
 public readonly record struct ModularSuitRefreshPowerEvent();
 
 [ByRefEvent]
