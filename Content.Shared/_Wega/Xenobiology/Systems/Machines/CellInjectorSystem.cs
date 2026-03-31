@@ -126,7 +126,7 @@ public sealed class CellMutagenicInjectorSystem : EntitySystem
         if (elapsedTime > ent.Comp.MaxTime)
         {
             QueueDel(ent.Comp.Target);
-            EntityManager.SpawnEntity(ent.Comp.FailedMob, Transform(ent).Coordinates);
+            Spawn(ent.Comp.FailedMob, Transform(ent).Coordinates);
             _popup.PopupPredicted(Loc.GetString("cell-injector-mutate-failed"), ent, null, PopupType.MediumCaution);
         }
         else if (elapsedTime > ent.Comp.MinTime)

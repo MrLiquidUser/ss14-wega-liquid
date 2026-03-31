@@ -80,6 +80,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly TagSystem _tag = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
+    private static readonly ProtoId<TagPrototype> Vampire = "Vampire";
 
     private readonly Dictionary<EntityUid, Dictionary<EntityUid, FixedPoint2>> _bloodConsumedTracker = new();
     private bool _isDamageBeingHandled = false;
@@ -165,7 +166,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     private void OnStartup(EntityUid uid, VampireComponent component, ComponentStartup args)
     {
         _alerts.ShowAlert(uid, component.BloodAlert);
-        _tag.AddTag(uid, "Vampire");
+        _tag.AddTag(uid, Vampire);
     }
 
     #region Drinking blood

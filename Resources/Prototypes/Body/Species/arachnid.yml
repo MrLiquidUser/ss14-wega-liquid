@@ -70,6 +70,7 @@
   parent:
   - AppearanceArachnid
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobArachnid
   name: Urist McWebs
   components:
@@ -137,6 +138,11 @@
       Unsexed: UnisexArachnid
   - type: TypingIndicator
     proto: spider
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobArachnid
+    lowest: MobGiantSpider
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBase

@@ -76,6 +76,7 @@
   parent:
   - AppearanceSlimePerson
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobSlimePerson
   name: Urist McWobble
   components:
@@ -98,6 +99,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      # enum.SurgeryUiKey.Key: # Corvax-Wega-Surgery
+      #   type: SurgeryBoundUserInterface # Corvax-Wega-Surgery
   - type: UseDelay
     delay: 0.5
   - type: Speech
@@ -173,6 +176,16 @@
       types:
         Asphyxiation: -1.0
     maxSaturation: 15
+  # - type: Operated # Corvax-Wega-Surgery
+  #   raceGraph: SlimeSurgery # Corvax-Wega-Surgery
+  #   limbRegeneration: true # Corvax-Wega-Surgery
+  # Corvax-Wega-Disease-start
+  - type: DiseaseCarrier
+    naturalImmunities:
+    - Ultragigacancer
+    - BleedersBite
+    - SLIMEITIS
+  # Corvax-Wega-Disease-end
 
 - type: entity
   parent: OrganBase

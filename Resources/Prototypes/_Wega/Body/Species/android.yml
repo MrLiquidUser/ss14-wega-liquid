@@ -1,12 +1,7 @@
 - type: entity
-  parent:
-  - BaseMobSpecies
-  - MobBloodstream
-  - MobRespirator
-  - MobFlammable
-  - MobAtmosExposed
-  id: MobAndroid
-  name: "Urisst' Mzhand Android"
+  parent: BaseSpeciesAppearance
+  id: AppearanceAndroid
+  name: android appearance
   components:
   - type: Sprite
     layers:
@@ -18,7 +13,6 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    # Corvax-Wega-start
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
@@ -31,7 +25,6 @@
     - map: [ "underweartop" ]
     - map: [ "jumpsuit" ]
     - map: [ "anal" ]
-    # Corvax-Wega-end
     - map: [ "gloves" ]
     - map: [ "shoes" ]
     - map: [ "ears" ]
@@ -101,12 +94,42 @@
           True: { shader: unshaded }
           False: { shader: shaded }
   - type: WiresVisuals
-  - type: Icon
-    sprite: Mobs/Species/Human/parts.rsi
-    state: full
-  - type: Body
-    prototype: Android
-    requiredLegs: 2
+  - type: InitialBody
+    organs:
+      Torso: OrganAndroidTorso
+      Head: OrganAndroidHead
+      ArmLeft: OrganAndroidArmLeft
+      ArmRight: OrganAndroidArmRight
+      HandLeft: OrganAndroidHandLeft
+      HandRight: OrganAndroidHandRight
+      LegLeft: OrganAndroidLegLeft
+      LegRight: OrganAndroidLegRight
+      FootLeft: OrganAndroidFootLeft
+      FootRight: OrganAndroidFootRight
+      Brain: OrganAndroidBrain
+      Eyes: OrganAndroidEyes
+      Tongue: OrganAndroidTongue
+      Appendix: OrganAndroidAppendix
+      Ears: OrganAndroidEars
+      Lungs: OrganAndroidGas
+      Heart: OrganAndroidTyrium
+      Stomach: OrganAndroidStomach
+      Liver: OrganAndroidLiver
+      Kidneys: OrganAndroidKidneys
+  - type: HumanoidProfile
+    species: Android
+
+- type: entity
+  parent:
+  - AppearanceAndroid
+  - BaseSpeciesMob
+  - MobBloodstream
+  - MobRespirator
+  - MobFlammable
+  - MobAtmosExposed
+  id: MobAndroid
+  name: "Urisst' Mzhand Android"
+  components:
   - type: TypingIndicator
     proto: robot
   - type: Speech
@@ -119,18 +142,6 @@
       Male: MaleAndroid
       Female: FemaleAndroid
       Unsexed: MaleAndroid
-  - type: HumanoidAppearance
-    species: Android
-    hideLayersOnEquip:
-    - Hair
-    - Snout
-  - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Android/displacement.rsi
-            state: jumpsuit-female
   - type: Damageable
     damageContainer: Android
   - type: DamageVisuals
@@ -174,7 +185,7 @@
     lowPressureMultiplier: 1000
   - type: ContainerContainer
     containers:
-      cell_slot: !type:ContainerSlot { }
+      cell_slot: !type:ContainerSlot {}
       light:
         !type:ContainerSlot
         showEnts: true
@@ -209,8 +220,8 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-      enum.SurgeryUiKey.Key:
-        type: SurgeryBoundUserInterface
+      # enum.SurgeryUiKey.Key:
+      #   type: SurgeryBoundUserInterface
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
@@ -227,16 +238,16 @@
       methods: [ Touch ]
       effects:
       - !type:Electrocute
-        shockDamage: 0.5
+        shockDamage: 1
         minScale: 20
-        electrocuteTime: 0.5
-  - type: Operated
-    raceGraph: AndroidSurgery
-    limbLossChance: 1.75
-    specialTool: Screwing
+        electrocuteTime: 1
+  # - type: Operated
+  #   raceGraph: AndroidSurgery
+  #   limbLossChance: 1.75
+  #   specialTool: Screwing
   - type: SyntheticOperated
-  - type: Pain
-    profile: SyntheticPainProfile
+  # - type: Pain
+  #   profile: SyntheticPainProfile
   - type: Tag
     tags:
     - CanPilot
@@ -244,7 +255,6 @@
     - DoorBumpOpener
     - AnomalyHost
     - Android
-  - type: Carriable
 
 - type: entity
   id: AndroidLightMarker
@@ -255,20 +265,170 @@
     enabled: false
 
 - type: entity
-  save: false
-  parent: MobHumanDummy
-  id: MobAndroidDummy
-  categories: [ HideSpawnMenu ]
+  id: OrganAndroidGas
+  parent: [ OrganBaseLungs, OrganAndroidInternal ]
+  name: "android gas system"
+  description: "Collects nitrogen from the atmosphere for cooling system."
   components:
-  - type: HumanoidAppearance
-    species: Android
-    hideLayersOnEquip:
-    - Hair
-    - Snout
-  - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Android/displacement.rsi
-            state: jumpsuit-female
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: gas_module
+  - type: Lung
+    alert: LowNitrogen
+  - type: Metabolizer
+    removeEmpty: true
+    solutionOnBody: false
+    solution: "Lung"
+    metabolizerTypes: [ Slime ]
+    groups:
+    - id: Gas
+      rateModifier: 100.0
+  - type: SolutionContainerManager
+    solutions:
+      Lung:
+        maxVol: 100.0
+        canReact: false
+  - type: Tag
+    tags:
+      - BaseOrgan
+      - LungsSynthetic
+
+- type: entity
+  id: OrganAndroidTyrium
+  parent: [ OrganBaseHeart, OrganAndroidInternal ]
+  name: "tyrium pump"
+  description: "Pumps blue blood through blue veins."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: tyrium_module
+  - type: Tag
+    tags:
+      - BaseOrgan
+      - HeartSynthetic
+
+- type: entity
+  id: OrganAndroidEyes
+  parent: [ OrganAndroidVisual, OrganBaseEyes, OrganAndroidInternal ]
+  name: "android cameras"
+  description: "High-tech cameras with bluespace neural networks."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Tag
+    tags:
+      - BaseOrgan
+      - EyesSynthetic
+
+- type: entity
+  parent: OrganBase
+  id: OrganAndroid
+  abstract: true
+  suffix: Android
+
+- type: entity
+  parent: OrganAndroid
+  id: OrganAndroidInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi # Эй приятель, замени спрайты тут, спасибо
+
+- type: entity
+  id: OrganAndroidVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Android/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Android
+
+- type: entity
+  parent: [ OrganAndroid, OrganAndroidVisual ]
+  id: OrganAndroidExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganAndroidExternal ]
+  id: OrganAndroidTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganAndroidExternal ]
+  id: OrganAndroidHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganAndroidExternal ]
+  id: OrganAndroidArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganAndroidExternal ]
+  id: OrganAndroidArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganAndroidExternal ]
+  id: OrganAndroidHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganAndroidExternal ]
+  id: OrganAndroidHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganAndroidExternal ]
+  id: OrganAndroidLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganAndroidExternal ]
+  id: OrganAndroidLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganAndroidExternal ]
+  id: OrganAndroidFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganAndroidExternal ]
+  id: OrganAndroidFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganAndroidInternal ]
+  id: OrganAndroidBrain
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganAndroidInternal ]
+  id: OrganAndroidTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganAndroidInternal ]
+  id: OrganAndroidAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganAndroidInternal ]
+  id: OrganAndroidEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganAndroidInternal, OrganAndroid ]
+  id: OrganAndroidLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganAndroidInternal, OrganAndroid ]
+  id: OrganAndroidHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganAndroidInternal ]
+  id: OrganAndroidStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganAndroidInternal ]
+  id: OrganAndroidLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganAndroidInternal ]
+  id: OrganAndroidKidneys

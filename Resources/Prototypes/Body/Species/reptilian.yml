@@ -81,6 +81,13 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
       # Corvax-Displacements-End
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       head:
         sizeMaps:
@@ -104,6 +111,13 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
     # Corvax-Displacements-End
+    # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    # Corvax-Wega-end
   - type: InitialBody
     organs:
       Torso: OrganReptilianTorso
@@ -133,9 +147,12 @@
   parent:
   - AppearanceReptilian
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobReptilian
   name: Urist McScales
   components:
+  - type: DiseaseCarrier # Corvax-Wega-Disease
+    diseaseResist: 0.1 # Corvax-Wega-Disease
   - type: Puller
     needsHands: false
   - type: Butcherable
@@ -185,6 +202,11 @@
       295: 0.8
       285: 0.7
   - type: Wagging
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobReptilian
+    lowest: MobKobold
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBase

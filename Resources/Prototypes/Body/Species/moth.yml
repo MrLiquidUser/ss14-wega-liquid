@@ -136,6 +136,7 @@
   parent:
   - AppearanceMoth
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobMoth
   name: Urist McFluff
   components:
@@ -193,6 +194,11 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobMoth
+    lowest: MobMothroach
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBase

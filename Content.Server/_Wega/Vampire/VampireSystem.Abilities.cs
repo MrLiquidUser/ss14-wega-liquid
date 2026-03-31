@@ -7,7 +7,6 @@ using Content.Server.Bible.Components;
 using Content.Server.Destructible;
 using Content.Server.Hallucinations;
 using Content.Server.Prayer;
-using Content.Server.Pinpointer;
 using Content.Shared.Actions.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
@@ -83,7 +82,7 @@ public sealed partial class VampireSystem
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
+    // [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
     [Dependency] private readonly SharedEmpSystem _emp = default!;
 

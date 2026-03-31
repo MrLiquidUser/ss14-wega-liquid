@@ -59,7 +59,7 @@
 
 #region Blood Drunk Miner
 - type: entity
-  parent: [ BaseMobHuman, BaseMobMegafauna ]
+  parent: [ MobHuman, BaseMobMegafauna ]
   id: MobBloodDrunkMiner
   name: unknown miner
   components:

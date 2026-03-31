@@ -92,6 +92,7 @@
     - Dizzy # Corvax-Wega-Dizzy
     - Stealth # Corvax-Wega-HydroponicsUpdate
     - StealthOnMove # Corvax-Wega-HydroponicsUpdate
+  - type: Carriable # Corvax-Wega-Carrying
   - type: Identity
   - type: IdExaminable
   - type: Internals
@@ -249,3 +250,4 @@
     alternateState: Standing
   - type: StunVisuals
   - type: LegionReversible # Corvax-Wega-Lavaland
+  - type: DiseaseCarrier # Corvax-Wega-Disease

@@ -119,6 +119,13 @@
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
             state: shoes
+      # Corvax-Wega-Add-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: socks
+      # Corvax-Wega-Add-end
   - type: Hands
     leftHandDisplacement:
       sizeMaps:
@@ -159,6 +166,7 @@
   parent:
   - AppearanceVox
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobVox
   name: Urist McVox
   components:
@@ -252,6 +260,11 @@
       types:
         Slash: 5 # Reduce?
   - type: Wagging
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobVox
+    lowest: MobStokkey
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBase

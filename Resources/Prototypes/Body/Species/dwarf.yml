@@ -66,6 +66,11 @@
     accent: scottish
   - type: Speech
     speechSounds: Bass
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobDwarf
+    lowest: MobMonkeyDwarf
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBase

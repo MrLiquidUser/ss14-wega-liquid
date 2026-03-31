@@ -1,0 +1,206 @@
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceFelinid
+  name: felinid appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganFelinidTorso
+      Head: OrganFelinidHead
+      ArmLeft: OrganFelinidArmLeft
+      ArmRight: OrganFelinidArmRight
+      HandLeft: OrganFelinidHandLeft
+      HandRight: OrganFelinidHandRight
+      LegLeft: OrganFelinidLegLeft
+      LegRight: OrganFelinidLegRight
+      FootLeft: OrganFelinidFootLeft
+      FootRight: OrganFelinidFootRight
+      Brain: OrganFelinidBrain
+      Eyes: OrganFelinidEyes
+      Tongue: OrganFelinidTongue
+      Appendix: OrganFelinidAppendix
+      Ears: OrganFelinidEars
+      Lungs: OrganFelinidLungs
+      Heart: OrganFelinidHeart
+      Stomach: OrganFelinidStomach
+      Liver: OrganFelinidLiver
+      Kidneys: OrganFelinidKidneys
+  - type: HumanoidProfile
+    species: Felinid
+    height: 150
+
+- type: entity
+  parent:
+  - AppearanceFelinid
+  - MobHuman
+  id: MobFelinid
+  name: Urist McFelinid
+  components:
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Piercing: 6
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 60
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      30: 0.7
+      60: 0.5
+  - type: OwOAccent
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.0
+    baseSprintSpeed: 5.0
+  - type: Stamina
+    baseCritThreshold: 80
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: PreCritical
+      100: Critical
+      160: Dead
+  - type: Speech
+    allowedEmotes: ['FilinidMeows', 'Purr', 'FilinidHisses']
+  - type: Vocal
+    sounds:
+      Male: FelinidSoundM
+      Female: FelinidSoundF
+      Unsexed: FelinidSoundM
+  - type: DnaModifier
+    upper: MobFelinid
+    lowest: MobCat
+
+- type: entity
+  parent: OrganBase
+  id: OrganFelinid
+  abstract: true
+  suffix: Felinid
+
+- type: entity
+  parent: OrganFelinid
+  id: OrganFelinidInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganFelinidVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Species/Human/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Felinid
+
+- type: entity
+  parent: [ OrganFelinid, OrganFelinidVisual ]
+  id: OrganFelinidExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganFelinidExternal ]
+  id: OrganFelinidTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganFelinidExternal ]
+  id: OrganFelinidHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganFelinidExternal ]
+  id: OrganFelinidArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganFelinidExternal ]
+  id: OrganFelinidArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganFelinidExternal ]
+  id: OrganFelinidHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganFelinidExternal ]
+  id: OrganFelinidHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganFelinidExternal ]
+  id: OrganFelinidLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganFelinidExternal ]
+  id: OrganFelinidLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganFelinidExternal ]
+  id: OrganFelinidFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganFelinidExternal ]
+  id: OrganFelinidFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganFelinidInternal ]
+  id: OrganFelinidBrain
+
+- type: entity
+  parent: [ OrganFelinidVisual, OrganBaseEyes, OrganFelinidInternal ]
+  id: OrganFelinidEyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganFelinidInternal ]
+  id: OrganFelinidTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganFelinidInternal ]
+  id: OrganFelinidAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganFelinidInternal ]
+  id: OrganFelinidEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganFelinidInternal ]
+  id: OrganFelinidLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganFelinidInternal ]
+  id: OrganFelinidHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganFelinidInternal ]
+  id: OrganFelinidStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganFelinidInternal ]
+  id: OrganFelinidLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganFelinidInternal ]
+  id: OrganFelinidKidneys

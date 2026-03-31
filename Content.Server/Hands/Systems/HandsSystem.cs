@@ -1,4 +1,3 @@
-using System.Linq; // Corvax-Wega-Surgery
 using System.Numerics;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
@@ -14,7 +13,6 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
-using Robust.Shared.Containers; // Corvax-Wega-Surgery
 using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
@@ -34,7 +32,6 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-Surgery
 
         private EntityQuery<PhysicsComponent> _physicsQuery;
 

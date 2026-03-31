@@ -4,7 +4,6 @@ using Content.Shared.Clothing; // Corvax-Wega-Wielder
 using Content.Shared.ImpulseFlash.Components; // Corvax-Wega-Arsenal
 using Content.Shared.Actions; // Corvax-Wega-Arsenal
 using Content.Shared.Inventory.Events; // Corvax-Wega-Arsenal
-using Content.Shared.Inventory; // Corvax-Wega-Arsenal
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;

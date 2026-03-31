@@ -76,7 +76,7 @@ namespace Content.Server.GameTicking.Rules
         private float GetTotalBloodDrankInRound()
         {
             var totalBloodDrank = 0f;
-            foreach (var vampireEntity in EntityManager.EntityQuery<VampireComponent>(true))
+            foreach (var vampireEntity in EntityQuery<VampireComponent>(true))
             {
                 totalBloodDrank += vampireEntity.TotalBloodDrank;
             }

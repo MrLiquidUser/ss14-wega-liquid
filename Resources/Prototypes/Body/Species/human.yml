@@ -86,6 +86,7 @@
   parent:
   - AppearanceHuman
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobHuman
   name: Urist McHands
   components:
@@ -93,6 +94,11 @@
     spawned:
     - id: FoodMeatHuman
       amount: 5
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobHuman
+    lowest: MobMonkey
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBase

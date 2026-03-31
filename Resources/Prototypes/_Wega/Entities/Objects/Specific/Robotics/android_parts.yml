@@ -13,7 +13,7 @@
 
 - type: entity
   id: LeftArmSyntheticImplant
-  parent: LeftArmAndroid
+  parent: OrganAndroidArmLeft
   abstract: true
   components:
   - type: BodyPartImplant
@@ -23,7 +23,7 @@
 
 - type: entity
   id: RightArmSyntheticImplant
-  parent: RightArmAndroid
+  parent: OrganAndroidArmRight
   abstract: true
   components:
   - type: BodyPartImplant
@@ -33,7 +33,7 @@
 
 - type: entity
   id: LeftLegSyntheticImplant
-  parent: LeftLegAndroid
+  parent: OrganAndroidLegLeft
   abstract: true
   components:
   - type: BodyPartImplant
@@ -43,7 +43,7 @@
 
 - type: entity
   id: RightLegSyntheticImplant
-  parent: RightLegAndroid
+  parent: OrganAndroidLegRight
   abstract: true
   components:
   - type: BodyPartImplant
