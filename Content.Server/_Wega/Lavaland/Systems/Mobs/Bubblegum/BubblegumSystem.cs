@@ -917,7 +917,7 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private void CheckDashDamage(EntityUid uid, EntityCoordinates coords, DamageSpecifier damage)
     {
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == uid || HasComp<BubblegumBossComponent>(entity.Owner))
@@ -1012,7 +1012,7 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private void CheckIllusionDashDamage(EntityUid uid, EntityUid? master, EntityCoordinates coords, DamageSpecifier damage)
     {
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == uid || entity.Owner == master)
@@ -1062,7 +1062,7 @@ public sealed partial class BubblegumSystem : EntitySystem
                 continue;
 
             var puddleCoords = Transform(puddle.Owner).Coordinates;
-            var entitiesOnPuddle = _lookup.GetEntitiesInRange<ActorComponent>(puddleCoords, 0.5f)
+            var entitiesOnPuddle = _lookup.GetEntitiesInRange<ActorComponent>(puddleCoords, 0.5f, LookupFlags.Uncontained)
                 .Where(a => HasComp<MobStateComponent>(a.Owner) && !HasComp<GhostComponent>(a.Owner));
 
             foreach (var entity in entitiesOnPuddle)

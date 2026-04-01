@@ -352,7 +352,6 @@
   id: OrganResomiEyes
   components:
   - type: VisualOrgan
-    layer: enum.HumanoidVisualLayers.Eyes
     data:
       sprite: _Wega/Mobs/Customization/eyes.rsi
       state: resomi

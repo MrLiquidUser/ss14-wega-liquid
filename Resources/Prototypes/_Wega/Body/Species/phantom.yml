@@ -224,7 +224,6 @@
   id: OrganPhantomEyes
   components:
   - type: VisualOrgan
-    layer: enum.HumanoidVisualLayers.Eyes
     data:
       sprite: Mobs/Customization/eyes.rsi
       state: eyes

@@ -160,7 +160,7 @@ public sealed partial class LegionSystem : EntitySystem
         if (TryComp<RandomHumanoidAppearanceComponent>(entity, out var random) && !random.RandomizeName)
             return;
 
-        if (_lookup.GetEntitiesInRange<LegionFaunaComponent>(Transform(entity).Coordinates, 6f).Count > 0)
+        if (_lookup.GetEntitiesInRange<LegionFaunaComponent>(Transform(entity).Coordinates, 6f, LookupFlags.Uncontained).Count > 0)
         {
             var legion = TryComp<HumanoidProfileComponent>(entity, out var humanoid) && humanoid.Height <= 160
                 || HasComp<SmallHeightComponent>(entity) ? entity.Comp.DwarfPolymorph : entity.Comp.BasePolymorph;

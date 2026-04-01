@@ -170,7 +170,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     #region Initialize U.I.
     private void InitializeUniqueIdentifiers(EntityUid uid, DnaModifierComponent component, HumanoidProfileComponent? humanoid = null)
     {
-        if (!Resolve(uid, ref humanoid))
+        if (!Resolve(uid, ref humanoid, false))
         {
             InitializeEmptyUniqueIdentifiers(uid, component);
             return;

@@ -5,6 +5,7 @@ using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item.ItemToggle;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -23,6 +24,7 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SlotBlockSystem _slotBlock = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
 
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
 
@@ -223,6 +225,7 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
         }
 
         Dirty(suit.Owner, equippedComp);
+        _speed.RefreshMovementSpeedModifiers(wearer);
     }
 
     private void UnequipAllParts(Entity<ModularSuitComponent> suit, EntityUid wearer, ModularSuitEquippedComponent? equippedComp = null)
@@ -246,7 +249,9 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
         }
 
         equippedComp.EquippedParts.Clear();
+
         Dirty(suit, equippedComp);
+        _speed.RefreshMovementSpeedModifiers(wearer);
     }
 
     private bool TryGetSlotFromClothing(EntityUid uid, out string? slot)
@@ -285,6 +290,22 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
 
         if (HasComp<ModularSuitPartComponent>(existingItem))
             return;
+
+        if (TryComp<AttachedClothingComponent>(existingItem, out var attached))
+        {
+            var parentItem = attached.AttachedUid;
+            if (TryComp<ToggleableClothingComponent>(parentItem, out var toggleable))
+            {
+                if (Inventory.TryUnequip(wearer, slot, out var removedAttached, force: true))
+                {
+                    if (toggleable.Container != null)
+                    {
+                        Container.Insert(removedAttached.Value, toggleable.Container);
+                    }
+                }
+            }
+            return;
+        }
 
         var hiddenComp = EnsureComp<ModularSuitHiddenClothingComponent>(suit.Owner);
         if (hiddenComp.HiddenItems.ContainsKey(slot))

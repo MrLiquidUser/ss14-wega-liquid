@@ -18,6 +18,8 @@
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
 
+    - map: [ "enum.HumanoidVisualLayers.Special" ] # Corvax-Wega-Breast
+
     # Underwear & clothing
     # Corvax-Wega-Edit-start
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
@@ -36,7 +38,7 @@
     # Stuff that goes over the body but below equipment
     - map: [ "enum.HumanoidVisualLayers.Overlay" ]
     - map: [ "anal" ]
-    - map: [ "enum.HumanoidVisualLayers.Special" ]
+    # - map: [ "enum.HumanoidVisualLayers.Special" ]
     # Corvax-Wega-Edit-end
 
     # More equipment

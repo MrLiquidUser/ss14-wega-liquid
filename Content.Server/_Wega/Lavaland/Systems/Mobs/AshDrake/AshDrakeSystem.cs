@@ -733,7 +733,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         }
 
         var damageRadius = 1.5f;
-        var directHitEntities = _lookup.GetEntitiesInRange<ActorComponent>(landingCoords, damageRadius);
+        var directHitEntities = _lookup.GetEntitiesInRange<ActorComponent>(landingCoords, damageRadius, LookupFlags.Uncontained);
         foreach (var entity in directHitEntities)
         {
             if (entity.Owner == ent.Owner)
@@ -772,7 +772,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         var damageRadius = 1.5f;
         var landingCoords = new EntityCoordinates(mapUid.Value, centerPos);
 
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(landingCoords, damageRadius);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(landingCoords, damageRadius, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == ent.Owner)
