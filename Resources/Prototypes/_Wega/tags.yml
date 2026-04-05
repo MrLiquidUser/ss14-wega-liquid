@@ -499,3 +499,6 @@
 
 - type: Tag
   id: CompressionModuleConflict
+
+- type: Tag
+  id: NoSlipModuleConflict
